@@ -1,9 +1,11 @@
 pipeline{
-    
-    agent any 
-      stages {
-        
-        stage('Git Checkout'){
+    agent any
+    tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
+    }
+    stages {
+	     stage('Git Checkout'){
             
             steps{
                 
@@ -13,18 +15,20 @@ pipeline{
                 }
             }
         }
-      
-        stage('Maven build'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn clean install package'
-                }
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
             }
         }
-        
+
+        stage ('Build') {
+            steps {
+                sh 'mvn clean -Dmaven.test.failure.ignore=true install' 
+            }
+           
         }
-        
+    }	          
 }
