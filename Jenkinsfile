@@ -1,9 +1,6 @@
 pipeline{
     agent any
-    tools {
-         jdk 'jdk11'
-    }
-    stages {
+       stages {
 	     stage('Git Checkout'){
             
             steps{
