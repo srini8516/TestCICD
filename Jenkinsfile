@@ -1,10 +1,7 @@
 pipeline{
     
     agent any 
-     tools{
-        maven 'Maven'
-    }
-    stages {
+      stages {
         
         stage('Git Checkout'){
             
@@ -23,7 +20,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn clean install'
+                    sh 'mvn clean install package'
                 }
             }
         }
