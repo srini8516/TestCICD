@@ -72,7 +72,7 @@ pipeline{
 				       groupId: 'com.example', nexusUrl: '192.168.0.106:8081/', 
 				       nexusVersion: 'nexus3', protocol: 'http', 
 				       repository: 'demoapp-release',
-				       version: "$(readpomversion.version)"
+				       version: "${readpomversion.version}"
 			       }
 		       }
 	       }
