@@ -63,5 +63,18 @@ pipeline{
                     }
                 }
             }
+	       stage{
+		       steps{
+			       script{
+			       nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']],
+				       credentialsId: 'nexusauth', 
+				       groupId: 'com.example', nexusUrl: '192.168.0.106:8081/', 
+				       nexusVersion: 'nexus3', protocol: 'http', 
+				       repository: 'demoapp-release',
+				       version: '1.0.0'
+			       }
+		       }
+	       }
+		       
     }	          
 }
