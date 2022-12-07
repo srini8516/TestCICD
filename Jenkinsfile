@@ -45,7 +45,7 @@ pipeline{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                    withSonarQubeEnv(credentialsId: 'sonar qubee API') {
                         
                         bat 'mvn clean package sonar:sonar'
                     }
