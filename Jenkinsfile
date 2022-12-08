@@ -1,4 +1,9 @@
 pipeline{
+	environment {
+registry = "srinivasbr0107/srini8516"
+registryCredential = 'dockerhub_id'
+dockerImage = ''
+}
     agent any
        stages {
 	     stage('Git Checkout'){
