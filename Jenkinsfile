@@ -80,9 +80,7 @@ pipeline{
 	  stage('Docker Image Build'){            
             steps{                
                 script{
-                    bat 'docker image build -t $job_name:v1.$build_id'
-		    bat 'docker image tag $job_name:v1.$build_id srinivasbr0107/$job_name:v1.$build_id'
-		   bat 'docker image tag $job_name:v1.$build_id srinivasbr0107/latest'	
+			docker.build registry + ":$BUILD_NUMBER"                   
                 }
             }
         }	
